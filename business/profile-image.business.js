@@ -25,8 +25,12 @@ ProfileImageBusiness.prototype.getEmailImage = function(email) {
     })
     .then(function(result) {
       var data = JSON.parse(result);
+      var totalResults = parseInt(data.searchInformation.totalResults);
 
-      // TODO: Account for data or items being empty
+      if (!totalResults) {
+        return null;
+      }
+
       return data.items[0].link;
     });
 

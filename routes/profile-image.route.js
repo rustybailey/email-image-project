@@ -20,10 +20,16 @@ function(req, res, next) {
 },
 function(req, res, next) {
   var encodedEmail = req.params.email;
+  var message;
 
   profileImageBusiness.getEmailImage(encodedEmail)
     .done(function(result) {
-      res.send({ success: true, data: result, message: "First image based on email found." });
+      if (!result) {
+        message = "No images found based on that email.";
+      } else {
+        message = "First image based on email found.";
+      }
+      res.send({ success: true, data: result, message: message });
     }, function(error) {
       next(error);
     });
