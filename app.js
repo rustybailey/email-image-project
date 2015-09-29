@@ -3,6 +3,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
+var validator = expressValidator.validator;
 
 var app = express();
 var profileImage = require('./routes/profile-image.route');
@@ -17,6 +19,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
+app.use(expressValidator({
+  customValidators: {
+    isDecodedEmail: function(value) {
+      var email = decodeURIComponent(value);
+      return validator.isEmail(email);
+    }
+  }
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/profile-image', profileImage);
