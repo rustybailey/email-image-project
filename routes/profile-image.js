@@ -15,9 +15,8 @@ Promise.promisifyAll(myCache);
 /* GET images from Google based on email. */
 router.get('/:email', function(req, res) {
   var encodedEmail = req.params.email;
-  // TODO: Put these two items in a config somewhere
-  var googleAPIKey = 'AIzaSyC1G5tI8em5WkSk6RyVwqV5zGLv7e1-hfc';
-  var cxCode = '010249180093990001910:krzjvvbgvne';
+  var googleAPIKey = process.env.GOOGLE_API_KEY;
+  var cxCode = process.env.GOOGLE_CX_CODE;
 
   myCache.getAsync('email_' + encodedEmail)
     .then(function(result) {
