@@ -1,5 +1,5 @@
 {
-    "excludeFiles": ["node_modules/**", "api_docs/**", "coverage/**"],
+    "excludeFiles": ["node_modules/**", "public/components/**"],
     "disallowEmptyBlocks": true,
     "disallowKeywordsOnNewLine": ["else"],
     "disallowKeywords": ["with"],
