@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
-var profileImage = require('./routes/profile-image');
+var profileImage = require('./routes/profile-image.route');
 
 var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.send({ error: err });
+    res.send({ success: false, data: null, message: err.message });
   });
 }
 
@@ -44,7 +44,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.send({ error: err });
+  res.send({ success: false, data: null, message: err.message });
 });
 
 module.exports = app;
