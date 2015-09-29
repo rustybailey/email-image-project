@@ -1,7 +1,7 @@
 var Promise = require('bluebird');
 var NodeCache = require('node-cache');
-var myCache = new NodeCache();
-Promise.promisifyAll(myCache);
+var cache = new NodeCache();
+Promise.promisifyAll(cache);
 
 function ProfileImageBusiness(dataHandler) {
   this.dataHandler = dataHandler;
@@ -11,14 +11,14 @@ ProfileImageBusiness.prototype.getEmailImage = function(email) {
   var that = this;
   var cacheKey = 'email_' + email;
 
-  return myCache.getAsync(cacheKey)
+  return cache.getAsync(cacheKey)
     .then(function(result) {
       if (result) {
         return result;
       } else {
         return that.dataHandler.googleImageQuery(email)
           .then(function(result) {
-            myCache.setAsync(cacheKey, result);
+            cache.setAsync(cacheKey, result);
             return result;
           });
       }
