@@ -14,6 +14,8 @@ module.exports = angular.module('emailImageProject', [
       }
   ]);
 
+require('./services/email-image.service');
+
 require('./controllers/contacts.controller');
 
 require('./templates/contacts.html');

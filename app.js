@@ -11,6 +11,7 @@ var webpackConfig = require('./webpack.config.js');
 
 var app = express();
 var profileImage = require('./routes/profile-image.route');
+require('dotenv').load();
 
 var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
