@@ -1,5 +1,5 @@
 {
-    "excludeFiles": ["node_modules/**", "public/components/**"],
+    "excludeFiles": ["node_modules/**", "public/components/**", "public/bundle.js"],
     "disallowEmptyBlocks": true,
     "disallowKeywordsOnNewLine": ["else"],
     "disallowKeywords": ["with"],
