@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var validator = expressValidator.validator;
+var webpack = require('webpack');
+var webpackMiddleware = require("webpack-dev-middleware");
+var webpackConfig = require('./webpack.config.js');
 
 var app = express();
 var profileImage = require('./routes/profile-image.route');
@@ -27,6 +30,9 @@ app.use(expressValidator({
     }
   }
 }));
+if (env === 'development') {
+  app.use(webpackMiddleware(webpack(webpackConfig)));
+}
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/profile-image', profileImage);

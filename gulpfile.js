@@ -1,29 +1,14 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
-  plumber = require('gulp-plumber'),
-  livereload = require('gulp-livereload'),
-  sass = require('gulp-sass');
+  livereload = require('gulp-livereload');
 
-// TODO: Add minification step and serve that in prod.
-gulp.task('sass', function() {
-  gulp.src('./public/css/*.scss')
-    .pipe(plumber())
-    .pipe(sass({
-      outputStyle: 'expanded'
-    }))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(livereload());
-});
-
-gulp.task('watch', function() {
-  gulp.watch('./public/css/*.scss', ['sass']);
-});
+// TODO: Create build task and add to postinstall script
 
 gulp.task('develop', function() {
   livereload.listen();
   nodemon({
     script: 'bin/www',
-    ext: 'js jade coffee',
+    ext: 'js scss html',
     stdout: false
   }).on('readable', function() {
     this.stdout.on('data', function(chunk) {
@@ -36,8 +21,4 @@ gulp.task('develop', function() {
   });
 });
 
-gulp.task('default', [
-  'sass',
-  'develop',
-  'watch'
-]);
+gulp.task('default', ['develop']);
