@@ -2,7 +2,7 @@
 'use strict';
 // load in scss/js vendor files
 /* Styles */
-require('../css/style.scss');
+require('../scss/index.scss');
 /* JS */
 var angular = require('angular');
 

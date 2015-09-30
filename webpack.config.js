@@ -16,13 +16,20 @@ module.exports = {
     },
     module: {
        loaders: [
-            { test: /\.scss$/, loader: 'style!css!sass' },
+            { test: /\.scss$/, loader: 'style!css!sass?' +
+              'includePaths[]=' +
+                encodeURIComponent(path.resolve(__dirname, './node_modules'))
+            },
             { test: /\.png$/, loader: 'url?limit=100000' },
             { test: /\.jpg$/, loader: 'file' },
             { test: /\.gif$/, loader: 'file' },
             {
-                test: /\.html$/,
-                loader: "ngtemplate?relativeTo=" + (path.resolve(__dirname, './public/')) + "/!html"
+              test: /\.html$/,
+              loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './public/')) + '/!html'
+            },
+            {
+              test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
+              loader: 'url-loader?limit=8192'
             }
        ]
     },
