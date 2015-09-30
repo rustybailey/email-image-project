@@ -1,4 +1,4 @@
-Email Image Search ![Travis Build Status](https://travis-ci.org/rustybailey/email-image-project.svg?branch=master)
+Email Image Search [![Build Status](https://travis-ci.org/rustybailey/email-image-project.svg?branch=master)](https://travis-ci.org/rustybailey/email-image-project)
 =====================
 
 Search for an email, get an image
