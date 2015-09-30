@@ -9,6 +9,9 @@
     "jscs": "jscs .",
     "postinstall": "gulp build"
   },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
   "dependencies": {
     "angular": "^1.4.7",
     "angular-route": "^1.4.7",

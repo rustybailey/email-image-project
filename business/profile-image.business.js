@@ -1,32 +1,31 @@
-var Promise = require('bluebird');
+var Bluebird = require('bluebird');
 var NodeCache = require('node-cache');
 var cache = new NodeCache();
-Promise.promisifyAll(cache);
+Bluebird.promisifyAll(cache);
 
 function ProfileImageBusiness(dataHandler) {
   this.dataHandler = dataHandler;
 }
 
 ProfileImageBusiness.prototype.getEmailImage = function(email) {
-  var that = this;
   var cacheKey = 'email_' + email;
+  var data, totalResults, link;
 
   return cache.getAsync(cacheKey)
-    .then(function(result) {
+    .then(result => {
       if (result) {
         return result;
       } else {
-        return that.dataHandler.googleImageQuery(email)
+        return this.dataHandler.googleImageQuery(email)
           .then(function(result) {
             cache.setAsync(cacheKey, result);
             return result;
           });
       }
     })
-    .then(function(result) {
-      var data = JSON.parse(result);
-      var totalResults = parseInt(data.searchInformation.totalResults);
-      var link;
+    .then(result => {
+      data = JSON.parse(result);
+      totalResults = parseInt(data.searchInformation.totalResults);
 
       if (!totalResults) {
         return null;
@@ -40,8 +39,6 @@ ProfileImageBusiness.prototype.getEmailImage = function(email) {
 
       return link;
     });
-
-
 };
 
 module.exports = ProfileImageBusiness;

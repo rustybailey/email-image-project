@@ -23,14 +23,14 @@ function(req, res, next) {
   var message;
 
   profileImageBusiness.getEmailImage(encodedEmail)
-    .done(function(result) {
+    .done(result => {
       if (!result) {
         message = "No images found based on that email.";
       } else {
         message = "First image based on email found.";
       }
-      res.send({ success: true, data: result, message: message });
-    }, function(error) {
+      res.send({ success: true, data: result, message });
+    }, error => {
       next(error);
     });
 });
