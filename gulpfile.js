@@ -1,6 +1,9 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
-  livereload = require('gulp-livereload');
+  livereload = require('gulp-livereload'),
+  gutil = require('gulp-util'),
+  webpack = require('webpack'),
+  webpackConfig = require('./webpack.config.js');
 
 // TODO: Create build task and add to postinstall script
 
@@ -18,6 +21,25 @@ gulp.task('develop', function() {
     });
     this.stdout.pipe(process.stdout);
     this.stderr.pipe(process.stderr);
+  });
+});
+
+// Production build
+gulp.task('build', function(callback) {
+  // Add uglify plugin
+  webpackConfig.plugins = webpackConfig.plugins.concat(
+    new webpack.optimize.UglifyJsPlugin()
+  );
+
+  // run webpack
+  webpack(webpackConfig, function(err, stats) {
+    if (err) {
+      throw new gutil.PluginError('webpack:build', err);
+    }
+    gutil.log('[webpack:build]', stats.toString({
+      colors: true
+    }));
+    callback();
   });
 });
 
