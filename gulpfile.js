@@ -26,11 +26,7 @@ gulp.task('develop', function() {
 gulp.task('build', function(callback) {
   // Add uglify plugin
   webpackConfig.plugins = webpackConfig.plugins.concat(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        dead_code: false
-      }
-    })
+    new webpack.optimize.UglifyJsPlugin()
   );
 
   // run webpack

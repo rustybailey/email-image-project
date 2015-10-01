@@ -25,7 +25,8 @@ module.exports = {
             { test: /\.gif$/, loader: 'file' },
             {
               test: /\.html$/,
-              loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './public/')) + '/!html'
+              loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './public/')) + '/!html?minimize=false'
+              // minimize=false fixes UglifyJS breaking html: https://github.com/webpack/webpack/issues/752
             },
             {
               test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
