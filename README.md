@@ -33,7 +33,7 @@ Email Image Search is a simple project which takes an email as input to search f
     - See [Google's guide](https://developers.google.com/custom-search/json-api/v1/overview#prerequisites) for more info.
 
 #### Getting the local development environment running
-1. Clone the repo: `git clone https://github.com/TDASinternal/email-image-project.git` and change to that new directory.
+1. Clone the repo: `git clone https://github.com/rustybailey/email-image-project.git` and change to that new directory.
 2. At the root, create a file named `.env` which should contain the following:
 
     ```
