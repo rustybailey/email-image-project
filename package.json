@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "develop": "gulp develop",
     "test": "mocha ./test",
     "jshint": "jshint .",
     "jscs": "jscs .",

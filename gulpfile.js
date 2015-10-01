@@ -5,8 +5,6 @@ var gulp = require('gulp'),
   webpack = require('webpack'),
   webpackConfig = require('./webpack.config.js');
 
-// TODO: Create build task and add to postinstall script
-
 gulp.task('develop', function() {
   livereload.listen();
   nodemon({
