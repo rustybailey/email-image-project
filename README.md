@@ -43,4 +43,4 @@ Email Image Search is a simple project which takes an email as input to search f
 3. Install all node packages: `npm install`
     - Must have Python 2.7 (not 3.x) installed. If you have multiple versions installed and just need to use 2.7 for this step, try `npm install --python=python2.7`.
 4. Run `npm run develop` to start express server with gulp (which will also run webpack-dev-middleware in the 'development' environment).
-5. Open `http://localhost:8080/` to view the app.
+5. Open `http://localhost:3000/` to view the app.
