@@ -4,19 +4,23 @@ html, body {
   color: $text-color;
 }
 
-header {
-  padding: 5px 50px 10px;
+nav {
   background-color: $header-color;
 
   h3 {
     color: white;
+    margin: 15px 0;
   }
 }
 
 [ng-view] {
-  padding: 20px 50px;
+  margin-top: 20px;
 }
 
-.searched-image-container {
-  margin-top: 10px;
+.searched-image-container, .errors-container {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  height: 34px;
 }
