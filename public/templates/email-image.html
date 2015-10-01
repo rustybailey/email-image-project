@@ -1,8 +1,14 @@
-<div class="form-group">
-  <label for="emailSearch">Email address</label>
-  <input type="email" class="form-control" id="emailSearch" placeholder="Email" ng-model="email"/>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <form class="form-inline" ng-submit="getImage()">
+      <input type="email" class="form-control" placeholder="Email address" ng-model="email"/>
+      <button class="btn btn-primary" type="button" ng-click="getImage()">Get Image</button>
+    </form>
+  </div>
 </div>
-<button class="btn btn-primary" type="button" ng-click="getImage()">Get Image</button>
-<br />
-<img ng-src="{{emailImage}}" height="250" width="250"/>
+<div class="row">
+  <div class="col-xs-12 col-md-12 searched-image-container">
+    <img ng-show="!!emailImage" ng-src="{{emailImage}}" width="275"/>
+  </div>
+</div>
 
