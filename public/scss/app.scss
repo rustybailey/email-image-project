@@ -1,8 +1,18 @@
-// body {
-//   padding: 50px;
-//   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-// }
+html, body {
+  height: 100%;
+  width: 100%;
+  color: $text-color;
+}
 
-// a {
-//   color: #00B7FF;
-// }
+header {
+  padding: 5px 50px 10px;
+  background-color: $header-color;
+
+  h3 {
+    color: white;
+  }
+}
+
+[ng-view] {
+  padding: 20px 50px;
+}

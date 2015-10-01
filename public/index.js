@@ -4,18 +4,18 @@ module.exports = angular.module('emailImageProject', [
   .config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
       $routeProvider
-        .when('/contacts', {
-          templateUrl: 'templates/contacts.html',
-          controller: 'ContactsController'
+        .when('/email-image', {
+          templateUrl: 'templates/email-image.html',
+          controller: 'EmailImageController'
         })
         .otherwise({
-          redirectTo: '/contacts'
+          redirectTo: '/email-image'
         });
       }
   ]);
 
 require('./services/email-image.service');
 
-require('./controllers/contacts.controller');
+require('./controllers/email-image.controller');
 
-require('./templates/contacts.html');
+require('./templates/email-image.html');
