@@ -15,5 +15,6 @@
   "noempty": true,
   "nonew": true,
   "node": true,
-  "expr": true
+  "expr": true,
+  "esnext": true
 }
