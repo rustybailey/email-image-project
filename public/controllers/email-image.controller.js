@@ -11,7 +11,15 @@ module.exports = angular.module('emailImageProject')
         .then(function(result) {
           var image = result.data.data;
           $scope.emailImage = image;
-          $scope.imageResults.push({ image: image, searchStr: $scope.email });
+
+          if (image) {
+            $scope.imageResults.unshift({ image: image, searchStr: $scope.email });
+          }
         });
+    };
+
+    $scope.setImage = function(name, image) {
+      $scope.email = name;
+      $scope.emailImage = image;
     };
   });

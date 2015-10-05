@@ -29,9 +29,10 @@ nav {
   margin-bottom: 20px;
 }
 
-.search-results {
+.search-history {
   .list-group {
     font-size: 1.1em;
+    cursor: pointer;
 
     .image-container {
       width: 35px;
