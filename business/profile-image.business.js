@@ -1,7 +1,10 @@
 var Bluebird = require('bluebird');
 var NodeCache = require('node-cache');
-var cache = new NodeCache();
+var cache = new NodeCache({
+  stdTTL: 60 * 30 // 30 minutes
+});
 Bluebird.promisifyAll(cache);
+var parseResults = require('../helpers/utils');
 
 function ProfileImageBusiness(dataHandler) {
   this.dataHandler = dataHandler;
@@ -9,7 +12,6 @@ function ProfileImageBusiness(dataHandler) {
 
 ProfileImageBusiness.prototype.getEmailImage = function(email) {
   var cacheKey = 'email_' + email;
-  var data, totalResults, link;
 
   return cache.getAsync(cacheKey)
     .then(result => {
@@ -17,27 +19,14 @@ ProfileImageBusiness.prototype.getEmailImage = function(email) {
         return result;
       } else {
         return this.dataHandler.googleImageQuery(email)
-          .then(function(result) {
-            cache.setAsync(cacheKey, result);
-            return result;
-          });
+          .then(parseResults);
       }
     })
     .then(result => {
-      data = JSON.parse(result);
-      totalResults = parseInt(data.searchInformation.totalResults);
+      var cacheData = result || 'no data';
+      cache.setAsync(cacheKey, cacheData);
 
-      if (!totalResults) {
-        return null;
-      }
-
-      link = data.items[0].link;
-      // Fallback to thumbnail if link contains 'x-raw-image'
-      if (link.indexOf('x-raw-image') > -1) {
-        link = data.items[0].image.thumbnailLink;
-      }
-
-      return link;
+      return result === 'no data' ? null : result;
     });
 };
 

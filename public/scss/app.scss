@@ -17,10 +17,35 @@ nav {
   margin-top: 20px;
 }
 
-.searched-image-container, .errors-container {
+.top-buffer {
   margin-top: 20px;
 }
 
 .btn-primary {
   height: 34px;
+}
+
+.img-thumbnail {
+  margin-bottom: 20px;
+}
+
+.search-results {
+  .list-group {
+    font-size: 1.1em;
+
+    .image-container {
+      width: 35px;
+      height: 35px;
+      margin-right: 15px;
+      border-radius: 4px;
+      float: left;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .image-name {
+      line-height: 35px;
+      float: left;
+    }
+  }
 }
