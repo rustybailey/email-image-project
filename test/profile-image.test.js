@@ -39,7 +39,7 @@ describe('getEmailImage', () => {
     });
 
     it('should call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery).to.be.called;
+      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(true);
     });
 
     it('should return the first link', () => {
@@ -65,7 +65,7 @@ describe('getEmailImage', () => {
     });
 
     it('should not call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery).to.not.be.called;
+      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(false);
     });
 
     it('should return the first link', () => {
@@ -91,7 +91,7 @@ describe('getEmailImage', () => {
     });
 
     it('should call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery).to.be.called;
+      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(true);
     });
 
     it('should return the first link', () => {
