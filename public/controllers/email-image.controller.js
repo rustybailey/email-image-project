@@ -18,6 +18,9 @@ module.exports = angular.module('emailImageProject')
               .unshift({ image: image, searchStr: $scope.email })
               .value();
           }
+        })
+        .catch(function(err) {
+          $scope.imageRequestError = err.data.message;
         });
     };
 
