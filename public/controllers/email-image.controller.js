@@ -13,7 +13,10 @@ module.exports = angular.module('emailImageProject')
           $scope.emailImage = image;
 
           if (image) {
-            $scope.imageResults.unshift({ image: image, searchStr: $scope.email });
+            $scope.imageResults = _.chain($scope.imageResults)
+              .reject({ searchStr: $scope.email })
+              .unshift({ image: image, searchStr: $scope.email })
+              .value();
           }
         });
     };

@@ -4,6 +4,7 @@
 /* Styles */
 require('../scss/index.scss');
 /* JS */
+require('lodash');
 var angular = require('angular');
 
 // load the main app file
