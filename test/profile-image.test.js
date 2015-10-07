@@ -4,6 +4,8 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 var sinon = require('sinon');
 require('sinon-as-promised');
+var sinonChai = require("sinon-chai");
+chai.use(sinonChai);
 
 var profileImageDataHandler = require('../datahandlers/profile-image.datahandler');
 var ProfileImageBusiness = require('../business/profile-image.business');
@@ -39,7 +41,7 @@ describe('getEmailImage', () => {
     });
 
     it('should call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(true);
+      return expect(profileImageDataHandler.googleImageQuery).to.be.called;
     });
 
     it('should return the first link', () => {
@@ -65,7 +67,7 @@ describe('getEmailImage', () => {
     });
 
     it('should not call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(false);
+      return expect(profileImageDataHandler.googleImageQuery).to.not.be.called;
     });
 
     it('should return the first link', () => {
@@ -91,7 +93,7 @@ describe('getEmailImage', () => {
     });
 
     it('should call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(true);
+      return expect(profileImageDataHandler.googleImageQuery).to.be.called;
     });
 
     it('should return the first link', () => {
@@ -117,7 +119,7 @@ describe('getEmailImage', () => {
     });
 
     it('should not call the Google search datahandler', () => {
-      return expect(profileImageDataHandler.googleImageQuery.called).to.equal(false);
+      return expect(profileImageDataHandler.googleImageQuery).to.not.be.called;
     });
 
     it('should return the first link', () => {
