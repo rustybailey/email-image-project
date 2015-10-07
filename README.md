@@ -7,6 +7,7 @@ Email Image Search is a simple project which takes an email as input to search f
 #### Features
 - Frontend
     - Input which can search for image by email
+    - Clickable search history
     - Email validation
     - Uses AngularJS/Bootstrap/Sass
 - Backend
